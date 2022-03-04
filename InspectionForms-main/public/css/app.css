@@ -1,0 +1,619 @@
+/* This is the Overall Main Content Styling */
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+body{
+    background-color: white;
+    font-family: "Source Sans Pro", sans-serif;
+    position: relative;
+}
+
+.headerImages{
+   display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    min-width: 360px;
+}
+.lafargeLogo{
+    max-width: 248px;
+    min-width: 170px;
+    width: 40%;
+    height: 10%;
+}
+.maintenanceLogo{
+    max-width: 113px;
+    min-width: 78px;
+    width: 18%;
+}
+h1{
+    margin-top: 3%;
+}
+h2{
+    font-size: 1.6em;
+}
+h3{
+    font-size: 1.4em;
+}
+h4{
+    margin-top: 0%;
+}
+td{
+    padding: 12px;
+}
+.redText{
+    color: red;
+}
+button{
+    border: thin;
+    border-color: black;
+}
+.hiddenPrompt{
+    display: none;
+}
+.importantText{
+    font-weight: bold;
+}
+.checklistTitle{
+    font-weight: bold;
+    text-decoration: underline;
+}
+.formHeaderInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.formInputs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.twoTemps{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.singleItem{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.inputLabel{
+    font-family: Roboto, sans-serif;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+}
+.defectLabel{
+    margin-bottom: 0.5em;
+    display: flex;
+}
+.defectTitle{
+    margin-right: 5px;
+    padding-top: 5px;
+    font-weight: 550;
+}
+.radioLabel{
+    font-weight: 600;
+    margin-bottom: 0.73em;
+}
+.submitButton{
+    align-self: flex-end;
+    border: 1px solid green;
+    border-radius: 2em;
+    background-color: green;
+    color: white;
+    width: 20%;
+    height: 4em;
+    margin-top: 3em;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+    min-width: 100px
+}
+.submitButton:hover{
+    background-color: rgb(40, 236, 40);
+    border-color: transparent;
+    transition: all .1s ease-in-out;
+}
+.spacing{
+    margin-bottom: 0.7em;
+    max-width: 270px;
+}
+.hiddenDefect{
+    display: none;  
+}
+
+textarea{
+    resize: none; 
+    overflow: hidden;
+    min-height: 35px;
+    max-height: 100px;
+    width: 100%;
+    flex-basis: 80%;
+    border: 1px solid black;
+    border-radius: 0.5em;
+}
+select{
+    /* appearance: none; */
+    /* border-color: #777; */
+    font-family: inherit;
+    font-size: 0.9em;
+    border-radius: 0.5em;
+    /* outline: none; */
+    padding: 0.8em 3em 1em 1.5em;
+    background-color: transparent;
+    color: black;
+    border-color: black;
+    border: 1;
+    width: 100%;
+    max-width: 100px;
+}
+.prioritySelect{
+    display: flex;
+    position: relative;
+    height: 100%;
+    max-width: 160px;
+    width: 100%;
+    padding-bottom: 0.5em;
+}
+.dropdownArrow{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    border: 1px solid black;
+    border-color: black;
+    border-top-right-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    background-color: #f9f900;
+    height: 85%;
+    width: 1.8rem;
+    pointer-events: none;
+}
+.dropdownArrow::before,
+.dropdownArrow::after{
+    --size: 0.7em;
+
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.dropdownArrow::before{
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-bottom: var(--size) solid rgb(95, 95, 95);
+
+    top: 30%;
+}
+.dropdownArrow::after{
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-top: var(--size) solid rgb(95, 95, 95);
+
+    top: 60%;
+}
+
+/* End of Main Content Styling */
+
+/* Collapsable Styling */
+.collapsible {
+    /* Style the button that is used to open and close the collapsible content */
+    background-color: #f9f900;
+    font-weight: 600 ;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+.active, .collapsible:hover {
+      /* Add a background color to the button if it is clicked on (add the .active class with JS),
+       and when you move the mouse over it (hover) */
+    background-color: #f9f900;
+}
+  
+.content {
+      /* Style the collapsible content. Note: hidden by default */
+    padding: 0px 18px;
+    display: none;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #ffff9b;
+    overflow-x: scroll;
+}
+.collapsible:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+.active:after {
+        content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+/* -----------------------------------------------------------Secondary collabsible bar colour -------------------------------------------------------------*/
+
+.collapsiblesec {
+    /* Style the button that is used to open and close the collapsible content */
+    background-color: #4ff900e7;
+    font-weight: 600 ;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+.activesec, .collapsiblesec:hover {
+      /* Add a background color to the button if it is clicked on (add the .active class with JS),
+       and when you move the mouse over it (hover) */
+    background-color: #4ff900e7;
+}
+  
+.contentsec {
+      /* Style the collapsible content. Note: hidden by default */
+    padding: 0px 18px;
+    display: none;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #acf888e7;
+    overflow-x: scroll;
+}
+.collapsiblesec:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+.activesec:after {
+        content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+/* -----------------------------------------------------------Lime DSP collabsible bar colour -------------------------------------------------------------*/
+
+.collapsibleldsp {
+    /* Style the button that is used to open and close the collapsible content */
+    background-color: #b637ff;
+    font-weight: 600 ;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+.activeldsp, .collapsibleldsp:hover {
+      /* Add a background color to the button if it is clicked on (add the .active class with JS),
+       and when you move the mouse over it (hover) */
+    background-color: #b637ff;;
+}
+  
+.contentldsp {
+      /* Style the collapsible content. Note: hidden by default */
+    padding: 0px 18px;
+    display: none;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #d9a6f7;
+    overflow-x: scroll;
+}
+.collapsibleldsp:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+.activeldsp:after {
+        content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+/* -----------------------------------------------------------Lime DSP collabsible bar colour -------------------------------------------------------------*/
+
+.collapsiblewp {
+    /* Style the button that is used to open and close the collapsible content */
+    background-color: #32adff;
+    font-weight: 600 ;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+.activewp, .collapsiblewp:hover {
+      /* Add a background color to the button if it is clicked on (add the .active class with JS),
+       and when you move the mouse over it (hover) */
+    background-color: #32adff;
+}
+  
+.contentwp {
+      /* Style the collapsible content. Note: hidden by default */
+    padding: 0px 18px;
+    display: none;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #8bd1ff;
+    overflow-x: scroll;
+}
+.collapsiblewp:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+.activewp:after {
+        content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+/* End of Collapsable Styling */
+
+/* This Disables the default Scrollbar */
+::-webkit-scrollbar{
+    -webkit-appearance: none;
+    width: 0.5em;
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 1.5em;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+/* End of Scrollbar Disable */
+
+/* Checkbox Styling */
+input[type="checkbox"], input[type="radio"]{
+    -webkit-appearance: none;
+    appearance: none;
+    color: #009c74;
+}
+input[type="checkbox"] {
+    position: relative;
+    width: 2em;
+    height: 2em;
+    border: 1px solid black;
+    border-radius: 20%;
+    vertical-align: -20px;
+    
+}
+
+input[type="checkbox"]::before {
+    content: '\2714';
+    position: relative;
+    font-size: 2.3em;
+    right: 2px;
+    top: -0.3em;
+    visibility: hidden;
+}
+input[type="checkbox"]:checked::before {
+    visibility: visible;
+}
+/* End of Checkbox Styling */
+
+/* Radio Button Styling */
+input[type="radio"] {
+    position: relative;
+    width: 1.5em;
+    height: 1.5em;
+    border: 1px solid black;
+    border-radius: 50%;
+    vertical-align: -5px;
+}
+input[type="radio"]::before {
+    content: "";
+    position: absolute;
+    font-size: 1.5em;
+    right: 0.169em;
+    top: 0.14em;
+    width: 0.57em;
+    height: 0.60em;
+    background-color: #009c74;
+    border-radius: 50%;
+    visibility: hidden;
+}
+  
+input[type="radio"]:checked::before {
+    visibility: visible;
+}
+/* End of Radio Button Styling */
+
+/* Input Fields Styling */
+input[type="text"]{
+    border: 1.95px solid black;
+    border-radius: 0.5em;
+    margin-bottom: 0.8em;
+    width: 175px;
+    height: 30px;
+}
+input[type="date"]{
+    border: 1.9px solid black;
+    border-radius: 0.5em;
+    padding: 6px 10px;
+    width: 175px;
+    height: 30px ;
+    background-color: white;
+    margin-bottom: 0.8em;
+}
+input[type="number"]{
+    border: 1.9px solid black;
+    border-radius: 0.5em;
+    width: 90%;
+    max-width: 85px;
+    height: 2.5em;
+    text-align: center;
+    vertical-align:middle;
+}
+/* End of Input Field Styling */
+
+/* Responsive Screensize Styling */
+
+@media (max-width: 580px){
+    .formInputs{
+        display: flex;
+        flex-direction: column;
+        align-content: space-around;
+        flex-wrap: nowrap;
+    }
+    .formHeaderInfo{
+        display: flex;
+        flex-direction: column;
+        align-content: space-around;
+        flex-wrap: nowrap; 
+    }
+    .twoTemps{
+        flex-direction: column;
+        align-content: space-around;
+        flex-wrap: nowrap; 
+    }
+    .content{
+        justify-content: flex-start;
+    }
+    .hiddenDefect{
+    
+        flex-basis: 100%;
+    }
+    .defectTitle{
+        padding-top: 0px;
+    }
+    .hiddenDefect{
+        flex-direction: column;
+    }
+    select{
+        max-width: 250px;
+        max-height: 45px;
+        padding: 0.8em 0.9em 1em 1.5em;
+    }
+    .prioritySelect{
+        max-width: 312px;
+    }
+    .dropdownArrow{
+        max-height: 45px;
+    }
+    .dropdownArrow::before,
+    .dropdownArrow::after{
+    --size: 0.5em;
+}
+}
+@media (min-width:680px){
+    .twoTemps>label:nth-child(1){
+        flex-basis: 50%;
+        justify-content: space-around;
+        min-width: none;   
+        }
+        .twoTemps>label:nth-child(2){
+        flex-basis: 50%;
+        justify-content: space-around;
+        min-width: none;
+        }
+        .twoTemps>label:nth-child(3){
+        flex-basis: 50%;
+        justify-content: space-around;
+        }
+}
+@media (min-width:820px) {
+    .twoTemps>label:nth-child(1){
+    flex-basis: 50%;
+    justify-content: space-around;
+    align-content: center;
+    }
+    .twoTemps>label:nth-child(2){
+    flex-basis: 50%;
+    justify-content: space-around;
+    }
+    .twoTemps>label:nth-child(3){
+    flex-basis: 50%;
+    justify-content: space-around;
+    max-width: 420px;
+    }
+    textArea{
+        flex-basis: 90%;
+    }
+}
+@media (min-width:975px){
+    .twoTemps>label:nth-child(1){
+        max-width: 230px;
+    }
+    .twoTemps>label:nth-child(2){
+        max-width: 260px;
+    }
+    .twoTemps>label:nth-child(3){
+        max-width: 200px;
+    }
+    .twoTemps>label:nth-child(4){
+        max-width: 220px;
+    }
+}
+/* End of Responsive Styling */
+#loader {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    border: 9px solid #f3f3f3;
+    border-top: 9px solid #009c74;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+ 
+#lock-modal {
+    display: none;
+    justify-content: center;
+    background-color: rgba(0,0,0,.60);
+    position:fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+}
+.popup {   
+    width: 60%;
+    padding: 15px;
+    top: 25%;
+    min-width: 280px;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: #009c74;
+    background: white;
+    position: absolute;
+    z-index: 10001;
+    font-weight: 600;
+    font-size: 1.5em;
+    text-align: center;
+  }
+  .buttonArrangement{
+      display: flex;
+      justify-content: space-evenly;
+  }
+  #cancelButton{
+      background-color: rgb(255, 72, 72);
+  }

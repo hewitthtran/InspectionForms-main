@@ -1,0 +1,2143 @@
+<!-- Version 1.0 Juan De Leon 08/03/2021 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/app.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Dundas Secondary Daily Checklist</title>
+    <!-- Website Tab Title Can Be Changed^^^ -->
+</head>
+
+<body>
+    <header>
+        <!-- This Header Includes the Logos and Titles, Try not to change the Logo Sizing but the Titles can just be changed! -->
+        <div class="headerImages">
+            <img src="../public/images/lafargeLogo.png" class="lafargeLogo">
+            <img src="../public//images/maintenanceLogo.png" class="maintenanceLogo">
+        </div>
+        <!-- Change Titles Below between h1 and h2 tags -->
+        <h1>Dundas Daily Checklist</h1>
+        <h2>Secondary</h2>
+    </header>
+    <form action="/submitDataS" method="POST" id="checklistForm" name="secondaryForm">
+        <!-- this is what controls the form and where it gets sent^^^!!! -->
+        <section>
+            <div class="formHeaderInfo">
+                <!-- Name, Date and Shift Inputs -->
+                <!-- name -->
+                <label class="inputLabel">
+                    <div>Name:</div>
+                    <input type="text" name="employee" id="employee" required>
+                </label>
+                <!-- Date -->
+                <label class="inputLabel">
+                    <div>Date:</div>
+                    <input type="date" name="date" id="date" required>
+                </label>
+                <!-- shifts -->
+                <label class="radioLabel">
+                    <div>Shift:</div>
+                    <label>
+                        <span class="inputLabel">1</span>
+                        <input type="radio" name="shift" id="shift1" value="1" required>
+                    </label>
+                    <span></span>
+                    <label>
+                        <span class="inputLabel">2</span>
+                        <input type="radio" name="shift" id="shift2" value="2">
+                    </label>
+                </label>
+            </div>
+        </section>
+        <section>
+            <button type="button" class="collapsiblesec">Cone Crusher Checklist</button>
+            <div class="contentsec">
+                <table>
+                    <tr>
+                        <td>Oil Level, Breather</td>
+                        <td>Pressure Gauges</td>
+                        <td>Chute Plug Guard</td>
+                        <td>Crusher "Floats" To Easy Stop</td>
+                    </tr>
+                    <tr>
+                        <td>Oil Temp: Inlet & Outlet</td>
+                        <td>Oil Flow & Catch Screen</td>
+                        <td>Locking Posts Leaks</td>
+                        <td>Pinion Housing</td>
+                    </tr>
+                    <tr>
+                        <td>Oil Cooler, Leaks Circ-Pump</td>
+                        <td>Liners, Oil Level</td>
+                        <td>Crusher Mount Bolts</td>
+                    </tr>
+                    <tr>
+                        <td>Gear Reducer Breather</td>
+                        <td>Hydraulic System For Leaks</td>
+                        <td>Unusual Noises</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        <section>
+            <h3>Cone Crusher</h3>
+            <!-- "h3" and "h4" are just titles with h3 being the bigger one these can be changed ^ -->
+            <h4>CR1</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Inlet Temp °F</span>
+                    <input type="number" name="itCR1" pattern="[0-9]*" inputmode="numeric">
+                </label>
+                <label class="spacing">
+                    <span>Outlet Temp °F</span>
+                    <input type="number" name="otCR1" pattern="[0-9]*" inputmode="numeric">
+                </label>
+                <label class="spacing">
+                    <span>Outlet PSI</span>
+                    <input type="number" name="opCR1" pattern="[0-9]*" inputmode="numeric">
+                </label>
+            </div>
+            <div class="formInputs">
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gCR1" id="gCR1" value="checked"
+                        onchange="guardChecked('gCR1','hgCR1','Guard CR1 Defective')">
+                </label>
+                <input id="hgCR1" name="hgCR1" type="hidden" value="Guard CR1 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dCR1" value="checked"
+                        onchange="displayPrompt('defectCR1','hdCR1','pCR1')">
+                </label>
+                <div class="hiddenDefect" id="defectCR1">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdCR1" name="hdCR1"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pCR1" id="pCR1">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+        </section>
+        <section>
+            <button type="button" class="collapsiblesec">Canica Crusher Checklist</button>
+            <div class="contentsec">
+                <table>
+                    <tr>
+                        <td class="checklistTitle">Oil Tank</td>
+                        <td class="checklistTitle">Crusher</td>
+                        <td>Amp Meteres, Proper Feed Size</td>
+                        <td>Visually Inspect Interior</td>
+                    </tr>
+                    <tr>
+                        <td>Oil Level, Leaks, Temp, Flow</td>
+                        <td>Lubricate Top Grease Seal</td>
+                        <td>Vibration, Clean Cooling fins</td>
+                        <td>Electrical Cables</td>
+                    </tr>
+                    <tr>
+                        <td>Pressure</td>
+                        <td>Motors, Unusal Noises</td>
+                        <td>Cleanliness</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        <section>
+            <h3>Caninca Crusher</h3>
+            <!-- "h3" and "h4" are just titles with h3 being the bigger one these can be changed ^ -->
+            <h4>CR2</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Inlet PSI</span>
+                    <input type="number" name="ipCR2" pattern="[0-9]*" inputmode="numeric">
+                </label>
+                <label class="spacing">
+                    <span>Inlet Flow</span>
+                    <input type="number" name="ifCR2" pattern="[0-9]*" inputmode="numeric">
+                </label>
+                <label class="spacing">
+                    <span>Outlet PSI</span>
+                    <input type="number" name="opCR2" pattern="[0-9]*" inputmode="numeric">
+                </label>
+                <label class="spacing">
+                    <span>Outlet Flow</span>
+                    <input type="number" name="ofCR2" pattern="[0-9]*" inputmode="numeric">
+                </label>
+            </div>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gCR2" id="gCR2" value="checked"
+                        onchange="guardChecked('gCR2','hgCR2','Guard CR2 Defective')">
+                </label>
+                <input id="hgCR2" name="hgCR2" type="hidden" value="Guard CR2 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dCR2" value="checked"
+                        onchange="displayPrompt('defectCR2','hdCR2','pCR2')">
+                </label>
+                <div class="hiddenDefect" id="defectCR2">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdCR2" name="hdCR2"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pCR2" id="pCR2">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>CR3</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Inlet PSI</span>
+                    <input type="number" name="itCR3" pattern="[0-9]*" inputmode="numeric">
+                </label>
+                <label class="spacing">
+                    <span>Inlet Flow</span>
+                    <input type="number" name="ifCR3" pattern="[0-9]*" inputmode="numeric">
+                </label>
+                <label class="spacing">
+                    <span>Outlet PSI</span>
+                    <input type="number" name="opCR3" pattern="[0-9]*" inputmode="numeric">
+                </label>
+                <label class="spacing">
+                    <span>Outlet Flow</span>
+                    <input type="number" name="ofCR3" pattern="[0-9]*" inputmode="numeric">
+                </label>
+            </div>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gCR3" id="gCR3" value="checked"
+                        onchange="guardChecked('gCR3','hgCR3','Guard CR3 Defective')">
+                </label>
+                <input id="hgCR3" name="hgCR3" type="hidden" value="Guard CR3 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dCR3" value="checked"
+                        onchange="displayPrompt('defectCR3','hdCR3','pCR3')">
+                </label>
+                <div class="hiddenDefect" id="defectCR3">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdCR3" name="hdCR3"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pCR3" id="pCR3">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+        </section>
+        <section>
+            <button type="button" class="collapsiblesec">HP500 Cone Crusher Checklist</button>
+            <div class="contentsec">
+                <table>
+                    <tr>
+                        <td>Unusual Noise, Alarm sys.</td>
+                        <td>Wedges, Pinion Housing</td>
+                        <td>Fasteners, Feed Distrib.</td>
+                        <td>Oil Flow & straine</td>
+                        <td>Oil Level, Oil Cooler</td>
+                        <td>Clamping Pres</td>
+                    </tr>
+                    <tr>
+                        <td>Material Buildup, Wedges</td>
+                        <td>Liners & cover, Air Breather</td>
+                        <td>Connectors, Leaks</td>
+                        <td>Oil Tank & Leaks</td>
+                        <td>Cavity Release Pres.</td>
+                        <td>Adjustment Ring</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        <section>
+            <h3>HP500 Cone Crusher</h3>
+            <!-- "h3" and "h4" are just titles with h3 being the bigger one these can be changed ^ -->
+            <h4>CR4</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Oil Return °F</span>
+                    <input type="number" name="orCR4" pattern="[0-9]*" inputmode="numeric">
+                </label>
+                <label class="spacing">
+                    <span>Oil Out PSI</span>
+                    <input type="number" name="oopCR4" pattern="[0-9]*" inputmode="numeric">
+                </label>
+                <label class="spacing">
+                    <span>Oil Out °F</span>
+                    <input type="number" name="oofCR4" pattern="[0-9]*" inputmode="numeric">
+                </label>
+            </div>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gCR4" id="gCR4" value="checked"
+                        onchange="guardChecked('gCR4','hgCR4','Guard CR4 Defective')">
+                </label>
+                <input id="hgCR4" name="hgCR4" type="hidden" value="Guard CR4 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dCR4" value="checked"
+                        onchange="displayPrompt('defectCR4','hdCR4','pCR4')">
+                </label>
+                <div class="hiddenDefect" id="defectCR4">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdCR4" name="hdCR4"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pCR4" id="pCR4">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <button type="button" class="collapsiblesec">Screen</button>
+            <div class="contentsec">
+                <table>
+                    <tr>
+                        <td class="checklistTitle">Autolube</td>
+                        <td class="checklistTitle">Screen</td>
+                        <td>Bearing Seals</td>
+                        <td>Counterweight</td>
+                        <td>Rail Rubber</td>
+                        <td>Tube Covers</td>
+                    </tr>
+                    <tr>
+                        <td>Check Grease, Leaks</td>
+                        <td>Breaks & Wear</td>
+                        <td>Tensioning, Tension Device</td>
+                        <td>Motor Mount</td>
+                        <td>Feed Plate/Liners</td>
+                        <td>Chutes</td>
+                    </tr>
+                    <tr>
+                        <td>Operation</td>
+                        <td>Cracks, Loose Bolts</td>
+                        <td>Clearance, Unusual sounds</td>
+                        <td>Bearing Temp(Drive Side/ Opp)</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <h3>Screen</h3>
+            <!-- "h3" and "h4" are just titles with h3 being the bigger one these can be changed ^ -->
+            <h4>S1A</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gS1A" id="gS1A" value="checked"
+                        onchange="guardChecked('gS1A','hgS1A','Guard S1A Defective')">
+                </label>
+                <input id="hgS1A" name="hgS1A" type="hidden" value="Guard S1A Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dS1A" value="checked"
+                        onchange="displayPrompt('defectS1A','hdS1A','pS1A')">
+                </label>
+                <div class="hiddenDefect" id="defectS1A">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdS1A" name="hdS1A"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pS1A" id="pS1A">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>S1B</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gS1B" id="gS1B" value="checked"
+                        onchange="guardChecked('gS1B','hgS1B','Guard S1B Defective')">
+                </label>
+                <input id="hgS1B" name="hgS1B" type="hidden" value="Guard S1B Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dS1B" value="checked"
+                        onchange="displayPrompt('defectS1B','hdS1B','pS1B')">
+                </label>
+                <div class="hiddenDefect" id="defectS1B">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdS1B" name="hdS1B"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pS1B" id="pS1B">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>S2A</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gS2A" id="gS2A" value="checked"
+                        onchange="guardChecked('gS2A','hgS2A','Guard S2A Defective')">
+                </label>
+                <input id="hgS2A" name="hgS2A" type="hidden" value="Guard S2A Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dS2A" value="checked"
+                        onchange="displayPrompt('defectS2A','hdS2A','pS2A')">
+                </label>
+                <div class="hiddenDefect" id="defectS2A">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdS2A" name="hdS2A"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pS2A" id="pS2A">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>S2B</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gS2B" id="gS2B" value="checked"
+                        onchange="guardChecked('gS2B','hgS2B','Guard S2B Defective')">
+                </label>
+                <input id="hgS2B" name="hgS2B" type="hidden" value="Guard S2B Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dS2B" value="checked"
+                        onchange="displayPrompt('defectS2B','hdS2B','pS2B')">
+                </label>
+                <div class="hiddenDefect" id="defectS2B">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdS2B" name="hdS2B"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pS2B" id="pS2B">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>S3A</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gS3A" id="gS3A" value="checked"
+                        onchange="guardChecked('gS3A','hgS3A','Guard S3A Defective')">
+                </label>
+                <input id="hgS3A" name="hgS3A" type="hidden" value="Guard S3A Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dS3A" value="checked"
+                        onchange="displayPrompt('defectS3A','hdS3A','pS3A')">
+                </label>
+                <div class="hiddenDefect" id="defectS3A">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdS3A" name="hdS3A"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pS3A" id="pS3A">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>S3B</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gS3B" id="gS3B" value="checked"
+                        onchange="guardChecked('gS3B','hgS3B','Guard S3B Defective')">
+                </label>
+                <input id="hgS3B" name="hgS3B" type="hidden" value="Guard S3B Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dS3B" value="checked"
+                        onchange="displayPrompt('defectS3B','hdS3B','pS3B')">
+                </label>
+                <div class="hiddenDefect" id="defectS3B">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdS3B" name="hdS3B"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pS3B" id="pS3B">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+        </section>
+        <section>
+            <button type="button" class="collapsiblesec">Conveyors, Stackers, Buggy Bins</button>
+            <div class="contentsec">
+                <table>
+                    <tr>
+                        <td class="checklistTitle">Frame</td>
+                        <td class="checklistTitle">Belt</td>
+                        <td class="checklistTitle">Pulleys, Idlers</td>
+                        <td class="checklistTitle">Drive</td>
+                        <td class="checklistTitle">Stackers</td>
+                        <td class="checklistTitle">Gearbox</td>
+                        <td class="checklistTitle">Buggy Bin</td>
+                    </tr>
+                    <tr>
+                        <td>Structure, Buildup</td>
+                        <td>Alignment</td>
+                        <td>Buildup,Bearings</td>
+                        <td>V-belts, Elec Cable</td>
+                        <td>Drive Mech</td>
+                        <td>Oil Level</td>
+                        <td>Check Hopper</td>
+                    </tr>
+                    <tr>
+                        <td>Chutes/Rock Box</td>
+                        <td>Wear, Tears</td>
+                        <td>Lagging, Seized Rollers</td>
+                        <td>Gearbox Leakage</td>
+                        <td>Pathway</td>
+                        <td>Check Temp (max 190°F)</td>
+                    </tr>
+                    <tr>
+                        <td>Skirting, Mag</td>
+                        <td>Splices, Scrapers</td>
+                        <td>Cut Return Roller Brackets</td>
+                        <td>Bearings</td>
+                        <td>Stop Blocks, Tires</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        <section>
+            <h3>Conveyors, Stackers, Buggy</h3>
+            <!-- "h3" and "h4" are just titles with h3 being the bigger one these can be changed ^ -->
+            <h4>C1</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gC1" id="gC1" value="checked"
+                        onchange="guardChecked('gC1','hgC1','Guard C1 Defective')">
+                </label>
+                <input id="hgC1" name="hgC1" type="hidden" value="Guard C1 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dC1" value="checked" onchange="displayPrompt('defectC1','hdC1','pC1')">
+                </label>
+                <div class="hiddenDefect" id="defectC1">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdC1" name="hdC1"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pC1" id="pC1">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>C1A</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gC1A" id="gC1A" value="checked"
+                        onchange="guardChecked('gC1A','hgC1A','Guard C1A Defective')">
+                </label>
+                <input id="hgC1A" name="hgC1A" type="hidden" value="Guard C1A Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dC1A" value="checked"
+                        onchange="displayPrompt('defectC1A','hdC1A','pC1A')">
+                </label>
+                <div class="hiddenDefect" id="defectC1A">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdC1A" name="hdC1A"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pC1A" id="pC1A">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>C1B</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gC1B" id="gC1B" value="checked"
+                        onchange="guardChecked('gC1B','hgC1B','Guard C1B Defective')">
+                </label>
+                <input id="hgC1B" name="hgC1B" type="hidden" value="Guard C1B Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dC1B" value="checked"
+                        onchange="displayPrompt('defectC1B','hdC1B','pC1B')">
+                </label>
+                <div class="hiddenDefect" id="defectC1B">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdC1B" name="hdC1B"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pC1B" id="pC1B">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>C2</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gC2" id="gC2" value="checked"
+                        onchange="guardChecked('gC2','hgC2','Guard C2 Defective')">
+                </label>
+                <input id="hgC2" name="hgC2" type="hidden" value="Guard C2 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dC2" value="checked" onchange="displayPrompt('defectC2','hdC2','pC2')">
+                </label>
+                <div class="hiddenDefect" id="defectC2">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdC2" name="hdC2"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pC2" id="pC2">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>C3A</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gC3A" id="gC3A" value="checked"
+                        onchange="guardChecked('gC3A','hgC3A','Guard C3A Defective')">
+                </label>
+                <input id="hgC3A" name="hgC3A" type="hidden" value="Guard C3A Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dC3A" value="checked"
+                        onchange="displayPrompt('defectC3A','hdC3A','pC3A')">
+                </label>
+                <div class="hiddenDefect" id="defectC3A">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdC3A" name="hdC3A"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pC3A" id="pC3A">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>C3B</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gC3B" id="gC3B" value="checked"
+                        onchange="guardChecked('gC3B','hgC3B','Guard C3B Defective')">
+                </label>
+                <input id="hgC3B" name="hgC3B" type="hidden" value="Guard C3B Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dC3B" value="checked"
+                        onchange="displayPrompt('defectC3B','hdC3B','pC3B')">
+                </label>
+                <div class="hiddenDefect" id="defectC3B">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdC3B" name="hdC3B"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pC3B" id="pC3B">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>C4A</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gC4A" id="gC4A" value="checked"
+                        onchange="guardChecked('gC4A','hgC4A','Guard C4A Defective')">
+                </label>
+                <input id="hgC4A" name="hgC4A" type="hidden" value="Guard C4A Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dC4A" value="checked"
+                        onchange="displayPrompt('defectC4A','hdC4A','pC4A')">
+                </label>
+                <div class="hiddenDefect" id="defectC4A">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdC4A" name="hdC4A"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pC4A" idC4B <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>C4B</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gC4B" id="gC4B" value="checked"
+                        onchange="guardChecked('gC4B','hgC4B','Guard C4B Defective')">
+                </label>
+                <input id="hgC4B" name="hgC4B" type="hidden" value="Guard C4B Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dC4B" value="checked"
+                        onchange="displayPrompt('defectC4B','hdC4B','pC4B')">
+                </label>
+                <div class="hiddenDefect" id="defectC4B">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdC4B" name="hdC4B"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pC4B" id="pC4B">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>C5</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gC5" id="gC5" value="checked"
+                        onchange="guardChecked('gC5','hgC5','Guard C5 Defective')">
+                </label>
+                <input id="hgC5" name="hgC5" type="hidden" value="Guard C5 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dC5" value="checked" onchange="displayPrompt('defectC5','hdC5','pC5')">
+                </label>
+                <div class="hiddenDefect" id="defectC5">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdC5" name="hdC5"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pC5" id="pC5">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>C6</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gC6" id="gC6" value="checked"
+                        onchange="guardChecked('gC6','hgC6','Guard C6 Defective')">
+                </label>
+                <input id="hgC6" name="hgC6" type="hidden" value="Guard C6 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dC6" value="checked" onchange="displayPrompt('defectC6','hdC6','pC6')">
+                </label>
+                <div class="hiddenDefect" id="defectC6">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdC6" name="hdC6"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pC6" id="pC6">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>C7</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gC7" id="gC7" value="checked"
+                        onchange="guardChecked('gC7','hgC7','Guard C7 Defective')">
+                </label>
+                <input id="hgC7" name="hgC7" type="hidden" value="Guard C7 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dC7" value="checked" onchange="displayPrompt('defectC7','hdC7','pC7')">
+                </label>
+                <div class="hiddenDefect" id="defectC7">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdC7" name="hdC7"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pC7" id="pC7">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>C8</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gC8" id="gC8" value="checked"
+                        onchange="guardChecked('gC8','hgC8','Guard C8 Defective')">
+                </label>
+                <input id="hgC8" name="hgC8" type="hidden" value="Guard C8 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dC8" value="checked" onchange="displayPrompt('defectC8','hdC8','pC8')">
+                </label>
+                <div class="hiddenDefect" id="defectC8">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdC8" name="hdC8"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pC8" id="pC8">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>C9</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gC9" id="gC9" value="checked"
+                        onchange="guardChecked('gC9','hgC9','Guard C9 Defective')">
+                </label>
+                <input id="hgC9" name="hgC9" type="hidden" value="Guard C9 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dC9" value="checked" onchange="displayPrompt('defectC9','hdC9','pC9')">
+                </label>
+                <div class="hiddenDefect" id="defectC9">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdC9" name="hdC9"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pC9" id="pC9">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>C11</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gC11" id="gC11" value="checked"
+                        onchange="guardChecked('gC11','hgC11','Guard C11 Defective')">
+                </label>
+                <input id="hgC11" name="hgC11" type="hidden" value="Guard C11 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dC11" value="checked"
+                        onchange="displayPrompt('defectC11','hdC11','pC11')">
+                </label>
+                <div class="hiddenDefect" id="defectC11">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdC11" name="hdC11"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pC11" id="pC11">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>C12</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gC12" id="gC12" value="checked"
+                        onchange="guardChecked('gC12','hgC12','Guard C12 Defective')">
+                </label>
+                <input id="hgC12" name="hgC12" type="hidden" value="Guard C12 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dC12" value="checked"
+                        onchange="displayPrompt('defectC12','hdC12','pC12')">
+                </label>
+                <div class="hiddenDefect" id="defectC12">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdC12" name="hdC12"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pC12" id="pC12">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>C20</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gC20" id="gC20" value="checked"
+                        onchange="guardChecked('gC20','hgC20','Guard C20 Defective')">
+                </label>
+                <input id="hgC20" name="hgC20" type="hidden" value="Guard C20 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dC20" value="checked"
+                        onchange="displayPrompt('defectC20','hdC20','pC20')">
+                </label>
+                <div class="hiddenDefect" id="defectC20">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdC20" name="hdC20"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pC20" id="pC20">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>C21</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gC21" id="gC21" value="checked"
+                        onchange="guardChecked('gC21','hgC21','Guard C21 Defective')">
+                </label>
+                <input id="hgC21" name="hgC21" type="hidden" value="Guard C21 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dC21" value="checked"
+                        onchange="displayPrompt('defectC21','hdC21','pC21')">
+                </label>
+                <div class="hiddenDefect" id="defectC21">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdC21" name="hdC21"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pC21" id="pC21">
+                            <option value="">
+                                </optiogeogeon>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>FCD</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gFCD" id="gFCD" value="checked"
+                        onchange="guardChecked('gFCD','hgFCD','Guard FCD Defective')">
+                </label>
+                <input id="hgFCD" name="hgFCD" type="hidden" value="Guard FCD Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dFCD" value="checked"
+                        onchange="displayPrompt('defectFCD','hdFCD','pFCD')">
+                </label>
+                <div class="hiddenDefect" id="defectFCD">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdFCD" name="hdFCD"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pFCD" id="pFCD">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>CC1</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gCC1" id="gCC1" value="checked"
+                        onchange="guardChecked('gCC1','hgCC1','Guard CC1 Defective')">
+                </label>
+                <input id="hgCC1" name="hgCC1" type="hidden" value="Guard CC1 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dCC1" value="checked"
+                        onchange="displayPrompt('defectCC1','hdCC1','pCC1')">
+                </label>
+                <div class="hiddenDefect" id="defectCC1">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdCC1" name="hdCC1"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pCC1" id="pCC1">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>CC3</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gCC3" id="gCC3" value="checked"
+                        onchange="guardChecked('gCC3','hgCC3','Guard CC3 Defective')">
+                </label>
+                <input id="hgCC3" name="hgCC3" type="hidden" value="Guard CC3 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dCC3" value="checked"
+                        onchange="displayPrompt('defectCC3','hdCC3','pCC3')">
+                </label>
+                <div class="hiddenDefect" id="defectCC3">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdCC3" name="hdCC3"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pCC3" id="pCC3">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>CC4</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gCC4" id="gCC4" value="checked"
+                        onchange="guardChecked('gCC4','hgCC4','Guard CC4 Defective')">
+                </label>
+                <input id="hgCC4" name="hgCC4" type="hidden" value="Guard CC4 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dCC4" value="checked"
+                        onchange="displayPrompt('defectCC4','hdCC4','pCC4')">
+                </label>
+                <div class="hiddenDefect" id="defectCC4">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdCC4" name="hdCC4"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pCC4" id="pCC4">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>CC5</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gCC5" id="gCC5" value="checked"
+                        onchange="guardChecked('gCC5','hgCC5','Guard CC5 Defective')">
+                </label>
+                <input id="hgCC5" name="hgCC5" type="hidden" value="Guard CC5 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dCC5" value="checked"
+                        onchange="displayPrompt('defectCC5','hdCC5','pCC5')">
+                </label>
+                <div class="hiddenDefect" id="defectCC5">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdCC5" name="hdCC5"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pCC5" id="pCC5">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>CC6</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gCC6" id="gCC6" value="checked"
+                        onchange="guardChecked('gCC6','hgCC6','Guard CC6 Defective')">
+                </label>
+                <input id="hgCC6" name="hgCC6" type="hidden" value="Guard CC6 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dCC6" value="checked"
+                        onchange="displayPrompt('defectCC6','hdCC6','pCC6')">
+                </label>
+                <div class="hiddenDefect" id="defectCC6">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdCC6" name="hdCC6"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pCC6" id="pCC6">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>CC7</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gCC7" id="gCC7" value="checked"
+                        onchange="guardChecked('gCC7','hgCC7','Guard CC7 Defective')">
+                </label>
+                <input id="hgCC7" name="hgCC7" type="hidden" value="Guard CC7 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dCC7" value="checked"
+                        onchange="displayPrompt('defectCC7','hdCC7','pCC7')">
+                </label>
+                <div class="hiddenDefect" id="defectCC7">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdCC7" name="hdCC7"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pCC7" id="pCC7">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>CC12</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gCC12" id="gCC12" value="checked"
+                        onchange="guardChecked('gCC12','hgCC12','Guard CC12 Defective')">
+                </label>
+                <input id="hgCC12" name="hgCC12" type="hidden" value="Guard CC12 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dCC12" value="checked"
+                        onchange="displayPrompt('defectCC12','hdCC12','pCC12')">
+                </label>
+                <div class="hiddenDefect" id="defectCC12">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdCC12" name="hdCC12"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pCC12" id="pCC12">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>CC13</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gCC13" id="gCC13" value="checked"
+                        onchange="guardChecked('gCC13','hgCC13','Guard CC13 Defective')">
+                </label>
+                <input id="hgCC13" name="hgCC13" type="hidden" value="Guard CC13 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dCC13" value="checked"
+                        onchange="displayPrompt('defectCC13','hdCC13','pCC13')">
+                </label>
+                <div class="hiddenDefect" id="defectCC13">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdCC13" name="hdCC13"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pCC13" id="pCC13">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>ST2</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gST2" id="gST2" value="checked"
+                        onchange="guardChecked('gST2','hgST2','Guard ST2 Defective')">
+                </label>
+                <input id="hgST2" name="hgST2" type="hidden" value="Guard ST2 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dST2" value="checked"
+                        onchange="displayPrompt('defectST2','hdST2','pST2')">
+                </label>
+                <div class="hiddenDefect" id="defectST2">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdST2" name="hdST2"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pST2" id="pST2">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>ST3</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gST3" id="gST3" value="checked"
+                        onchange="guardChecked('gST3','hgST3','Guard ST3 Defective')">
+                </label>
+                <input id="hgST3" name="hgST3" type="hidden" value="Guard ST3 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dST3" value="checked"
+                        onchange="displayPrompt('defectST3','hdST3','pST3')">
+                </label>
+                <div class="hiddenDefect" id="defectST3">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdST3" name="hdST3"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pST3" id="pST3">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>ST8</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gST8" id="gST8" value="checked"
+                        onchange="guardChecked('gST8','hgST8','Guard ST8 Defective')">
+                </label>
+                <input id="hgST8" name="hgST8" type="hidden" value="Guard ST8 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dST8" value="checked"
+                        onchange="displayPrompt('defectST8','hdST8','pST8')">
+                </label>
+                <div class="hiddenDefect" id="defectST8">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdST8" name="hdST8"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pST8" id="pST8">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>ST9</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gST9" id="gST9" value="checked"
+                        onchange="guardChecked('gST9','hgST9','Guard ST9 Defective')">
+                </label>
+                <input id="hgST9" name="hgST9" type="hidden" value="Guard ST9 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dST9" value="checked"
+                        onchange="displayPrompt('defectST9','hdST9','pST9')">
+                </label>
+                <div class="hiddenDefect" id="defectST9">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdST9" name="hdST9"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pST9" id="pST9">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>BP1</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gBP1" id="gBP1" value="checked"
+                        onchange="guardChecked('gBP1','hgBP1','Guard BP1 Defective')">
+                </label>
+                <input id="hgBP1" name="hgBP1" type="hidden" value="Guard BP1 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dBP1" value="checked"
+                        onchange="displayPrompt('defectBP1','hdBP1','pBP1')">
+                </label>
+                <div class="hiddenDefect" id="defectBP1">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdBP1" name="hdBP1"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pBP1" id="pBP1">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>BP2</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gBP2" id="gBP2" value="checked"
+                        onchange="guardChecked('gBP2','hgBP2','Guard BP2 Defective')">
+                </label>
+                <input id="hgBP2" name="hgBP2" type="hidden" value="Guard BP2 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dBP2" value="checked"
+                        onchange="displayPrompt('defectBP2','hdBP2','pBP2')">
+                </label>
+                <div class="hiddenDefect" id="defectBP2">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdBP2" name="hdBP2"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pBP2" id="pBP2">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>BP3</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gBP3" id="gBP3" value="checked"
+                        onchange="guardChecked('gBP3','hgBP3','Guard BP3 Defective')">
+                </label>
+                <input id="hgBP3" name="hgBP3" type="hidden" value="Guard BP3 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dBP3" value="checked"
+                        onchange="displayPrompt('defectBP3','hdBP3','pBP3')">
+                </label>
+                <div class="hiddenDefect" id="defectBP3">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdBP3" name="hdBP3"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pBP3" id="pBP3">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>BP4</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gBP4" id="gBP4" value="checked"
+                        onchange="guardChecked('gBP4','hgBP4','Guard BP4 Defective')">
+                </label>
+                <input id="hgBP4" name="hgBP4" type="hidden" value="Guard BP4 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dBP4" value="checked"
+                        onchange="displayPrompt('defectBP4','hdBP4','pBP4')">
+                </label>
+                <div class="hiddenDefect" id="defectBP4">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdBP4" name="hdBP4"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pBP4" id="pBP4">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+        </section>
+        <section>
+            <button type="button" class="collapsiblesec">Feeders</button>
+            <div class="contentsec">
+                <table>
+                    <tr>
+                        <td>Unusual Sounds</td>
+                        <td>Frame Cracks</td>
+                        <td>Skirts</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        <section>
+            <h3>Feeders</h3>
+            <!-- "h3" and "h4" are just titles with h3 being the bigger one these can be changed ^ -->
+            <h4>Feeder VF4</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gVF4" id="gVF4" value="checked"
+                        onchange="guardChecked('gVF4','hgVF4','Guard VF4 Defective')">
+                </label>
+                <input id="hgVF4" name="hgVF4" type="hidden" value="Guard VF4 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dVF4" value="checked"
+                        onchange="displayPrompt('defectVF4','hdVF4','pVF4')">
+                </label>
+                <div class="hiddenDefect" id="defectVF4">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdVF4" name="hdVF4"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pVF4" id="pVF4">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>Feeder VF6</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gVF6" id="gVF6" value="checked"
+                        onchange="guardChecked('gVF6','hgVF6','Guard VF6 Defective')">
+                </label>
+                <input id="hgVF6" name="hgVF6" type="hidden" value="Guard VF6 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dVF6" value="checked"
+                        onchange="displayPrompt('defectVF6','hdVF6','pVF6')">
+                </label>
+                <div class="hiddenDefect" id="defectVF6">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdVF6" name="hdVF6"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pVF6" id="pVF6">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>Feeder VF7</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gVF7" id="gVF7" value="checked"
+                        onchange="guardChecked('gVF7','hgVF7','Guard VF7 Defective')">
+                </label>
+                <input id="hgVF7" name="hgVF7" type="hidden" value="Guard VF7 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dVF7" value="checked"
+                        onchange="displayPrompt('defectVF7','hdVF7','pVF7')">
+                </label>
+                <div class="hiddenDefect" id="defectVF7">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdVF7" name="hdVF7"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pVF7" id="pVF7">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>Feeder VF8</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gVF8" id="gVF8" value="checked"
+                        onchange="guardChecked('gVF8','hgVF8','Guard VF8 Defective')">
+                </label>
+                <input id="hgVF8" name="hgVF8" type="hidden" value="Guard VF8 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dVF8" value="checked"
+                        onchange="displayPrompt('defectVF8','hdVF8','pVF8')">
+                </label>
+                <div class="hiddenDefect" id="defectVF8">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdVF8" name="hdVF8"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pVF8" id="pVF8">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>Feeder VF9</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gVF9" id="gVF9" value="checked"
+                        onchange="guardChecked('gVF9','hgVF9','Guard VF9 Defective')">
+                </label>
+                <input id="hgVF9" name="hgVF9" type="hidden" value="Guard VF9 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dVF9" value="checked"
+                        onchange="displayPrompt('defectVF9','hdVF9','pVF9')">
+                </label>
+                <div class="hiddenDefect" id="defectVF9">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdVF9" name="hdVF9"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pVF9" id="pVF9">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>Feeder VF10</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gVF10" id="gVF10" value="checked"
+                        onchange="guardChecked('gVF10','hgVF10','Guard VF10 Defective')">
+                </label>
+                <input id="hgVF10" name="hgVF10" type="hidden" value="Guard VF10 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dVF10" value="checked"
+                        onchange="displayPrompt('defectVF10','hdVF10','pVF10')">
+                </label>
+                <div class="hiddenDefect" id="defectVF10">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdVF10" name="hdVF10"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pVF10" id="pVF10">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>Feeder VF11</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gVF11" id="gVF11" value="checked"
+                        onchange="guardChecked('gVF11','hgVF11','Guard VF11 Defective')">
+                </label>
+                <input id="hgVF11" name="hgVF11" type="hidden" value="Guard VF11 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dVF11" value="checked"
+                        onchange="displayPrompt('defectVF11','hdVF11','pVF11')">
+                </label>
+                <div class="hiddenDefect" id="defectVF11">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdVF11" name="hdVF11"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pVF11" id="pVF11">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+            <h4>Feeder VF12</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Guarding</span>
+                    <input type="checkbox" name="gVF12" id="gVF12" value="checked"
+                        onchange="guardChecked('gVF12','hgVF12','Guard VF12 Defective')">
+                </label>
+                <input id="hgVF12" name="hgVF12" type="hidden" value="Guard VF12 Defective">
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dVF12" value="checked"
+                        onchange="displayPrompt('defectVF12','hdVF12','pVF12')">
+                </label>
+                <div class="hiddenDefect" id="defectVF12">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdVF12" name="hdVF12"
+                            placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pVF12" id="pVF12">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+        </section>
+        <section>
+            <button type="button" class="collapsiblesec">Buildings</button>
+            <div class="contentsec">
+                <table>
+                    <tr>
+                        <td>Material Buildup And Origin</td>
+                        <td>Roof</td>
+                        <td>Floor</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        <section>
+            <h3>Buildings</h3>
+            <h4>Buildings</h4>
+            <div class="formInputs">
+                <!-- These are the Inputs for every specific Part the titles can be changed-->
+                <label class="spacing">
+                    <span>Defect Present</span>
+                    <input type="checkbox" name="dBUILDINGS" value="checked"
+                        onchange="displayPrompt('defectBUILDINGS','hdBUILDINGS','pBUILDINGS')">
+                </label>
+                <div class="hiddenDefect" id="defectBUILDINGS">
+                    <label class="defectLabel">
+                        <span class="defectTitle">Defect:</span>
+                        <textarea oninput="auto_grow(this)" wrap="hard" cols="200" type="text" id="hdBUILDINGS"
+                            name="hdBUILDINGS" placeholder="Type Defect Here"></textarea>
+                    </label>
+                    <span class="prioritySelect">
+                        <span class="defectTitle">Priority:</span>
+                        <select name="pBUILDINGS" id="pBUILDINGS">
+                            <option value=""></option>
+                            <option value="1">1: Immediate</option>
+                            <option value="2">2: Next Shutdown (within 24hrs)</option>
+                            <option value="3">3: Next Maintenance Day</option>
+                            <option value="4">4: Backlog</option>
+                            <option value="5">5: Special Project</option>
+                        </select>
+                        <span class="dropdownArrow"></span>
+                    </span>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="formInputs">
+            <button type="button" id="formConfirm" class="submitButton">Submit</button>
+        </div>
+
+        <div id="lock-modal">
+            <div class="popup" id="popup">
+                <p>This will be saved. Continue ?</p>
+                <div class="buttonArrangement">
+                    <button type="button" class="submitButton" id="cancelButton">Cancel</button>
+                    <button type="submit" class="submitButton" id="okButton">Ok</button>
+                </div>
+            </div>
+        </div>
+        <div id="loader"></div>
+        <input type="hidden" name="sections" id="" value="Secondary">
+    </form>
+
+</body>
+
+<footer>
+    <script src="../public/js/collapsibleBarSecondary.js"></script>
+    <script src="../public/js/displayPrompt.js"></script>
+    <script src="../public/js/shortFunctions.js"></script>
+    <script src="../public/js/validation.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../public/js/loader.js"></script>
+    <script src="../public/js/confirmation.js"></script>
+</footer>
+
+</html>
