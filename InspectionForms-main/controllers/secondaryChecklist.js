@@ -185,7 +185,7 @@ module.exports.postSecondaryChecklist = async (req, res) => {
             allDefects[i] = `${prefixes[i]}: ${allDefects[i]}`;
         }
     }
-    const allDefectsString = allDefects.filter(Boolean).join("\n");
+    const allDefectsString = allDefects.filter(Boolean);//.join("\n");
 
     const allPriorities = [
         pCR1, pCR2, pCR3, pCR4, pS1A, pS1B, pS2A, pS2B,
@@ -194,8 +194,8 @@ module.exports.postSecondaryChecklist = async (req, res) => {
         pFCD, pCC1, pCC3, pCC4, pCC5, pCC6, pCC7, pCC12, pCC13, pST2, pST3, pST8, pST9, pBP1, pBP2,
         pBP3, pBP4, pVF4, pVF6, pVF7, pVF8, pVF9, pVF10, pVF11, pVF12, pBUILDINGS
     ]
-    const allPrioritiesString = allPriorities.filter(Boolean).join("\n");
-
+    const allPrioritiesString = allPriorities.filter(Boolean);//.join("\n");
+/*
     if (defectArray.length) {
 
         await googleSheets.spreadsheets.values.append({
@@ -211,7 +211,23 @@ module.exports.postSecondaryChecklist = async (req, res) => {
             }
         })
     }
-
+*/
+for (let p = 0; p < defectArray.length; p++) {
+    if (defectArray.length) {
+        await googleSheets.spreadsheets.values.append({
+            auth,
+            spreadsheetId,
+            range: "Backlog-S!A:E",
+            valueInputOption: "USER_ENTERED",
+            resource: {
+                values: [
+                    [date, employee, sections, allPrioritiesString[p], allDefectsString[p], '-',
+                    ]
+                ]
+            }
+        })
+    }
+}
 
     // res.redirect("/")
     res.redirect("/secondaryChecklist");

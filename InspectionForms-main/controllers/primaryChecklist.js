@@ -123,7 +123,7 @@ module.exports.postPrimaryChecklist = async (req, res) => {
         }
     }
 
-    const allDefectsString = allDefects.filter(Boolean).join("\n");
+    const allDefectsString = allDefects.filter(Boolean);//.join("\n");
 
     const allPriorities = [
         //REPLACE ALL DOLLAR SIGNS ($$) WITH THE UNIT NAME CHOSEN ON THE .HTML FILE
@@ -132,8 +132,8 @@ module.exports.postPrimaryChecklist = async (req, res) => {
         pBELT, pSTACKER, pDUST, pCOMPRESSOR, pCBELT, pC1P,
         pC2P, pVF1, pVF2, pVF3, pVF5,
     ]
-    const allPrioritiesString = allPriorities.filter(Boolean).join("\n");
-
+    const allPrioritiesString = allPriorities.filter(Boolean);//.join("\n");
+/*
     if (defectArray.length) {
 
         await googleSheets.spreadsheets.values.append({
@@ -149,7 +149,24 @@ module.exports.postPrimaryChecklist = async (req, res) => {
             }
         })
     }
+*/
 
+for (let p = 0; p < defectArray.length; p++) {
+    if (defectArray.length) {
+        await googleSheets.spreadsheets.values.append({
+            auth,
+            spreadsheetId,
+            range: "Backlog-P!B:F",
+            valueInputOption: "USER_ENTERED",
+            resource: {
+                values: [
+                    [date, employee, sections, allPrioritiesString[p], allDefectsString[p], '-',
+                    ]
+                ]
+            }
+        })
+    }
+}
 
     // res.redirect("/")
     res.redirect("/primaryChecklist");

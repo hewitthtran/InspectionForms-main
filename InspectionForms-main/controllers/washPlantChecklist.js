@@ -168,7 +168,7 @@ module.exports.postWashPlantChecklist = async (req, res) => {
         }
     }
 
-    const allDefectsString = allDefects.filter(Boolean).join("\n");
+    const allDefectsString = allDefects.filter(Boolean);//.join("\n");
 
     const allPriorities = [
         pWS1, pWS2, pWS3, pWS4, pCLASS, pSINGLE, pTWIN,
@@ -178,8 +178,8 @@ module.exports.postWashPlantChecklist = async (req, res) => {
         pST148, pCG1, pCG2, pCG3, pCG4, pCG5, pCG6, pSPUMP,
         pFPUMP, pNSS, pSSS,
     ]
-    const allPrioritiesString = allPriorities.filter(Boolean).join("\n");
-
+    const allPrioritiesString = allPriorities.filter(Boolean);//.join("\n");
+/*
     if (defectArray.length) {
 
         await googleSheets.spreadsheets.values.append({
@@ -194,6 +194,24 @@ module.exports.postWashPlantChecklist = async (req, res) => {
                 ]
             }
         })
+    }
+    */
+
+    for (let p = 0; p < defectArray.length; p++) {
+        if (defectArray.length) {
+            await googleSheets.spreadsheets.values.append({
+                auth,
+                spreadsheetId,
+                range: "Backlog-WP!A:E",
+                valueInputOption: "USER_ENTERED",
+                resource: {
+                    values: [
+                        [date, employee, sections, allPrioritiesString[p], allDefectsString[p], '-',
+                        ]
+                    ]
+                }
+            })
+        }
     }
 
 

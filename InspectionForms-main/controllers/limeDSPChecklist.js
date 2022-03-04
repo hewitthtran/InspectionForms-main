@@ -138,7 +138,7 @@ module.exports.postLimeDSPChecklist = async (req, res) => {
         }
     }
 
-    const allDefectsString = allDefects.filter(Boolean).join("\n");
+    const allDefectsString = allDefects.filter(Boolean);//.join("\n");
 
     const allPriorities = [
         pS1, p9A, p9B, pC1, pC3A, pC7, pSTCON,
@@ -147,8 +147,8 @@ module.exports.postLimeDSPChecklist = async (req, res) => {
         pC29, pC30, pC31, pC32, pC33, pC35,
         pC36, pC37, pC38, pST5, pST6,
     ]
-    const allPrioritiesString = allPriorities.filter(Boolean).join("\n");
-
+    const allPrioritiesString = allPriorities.filter(Boolean);//.join("\n");
+/*
     if (defectArray.length) {
 
         await googleSheets.spreadsheets.values.append({
@@ -164,7 +164,24 @@ module.exports.postLimeDSPChecklist = async (req, res) => {
             }
         })
     }
+*/
 
+    for (let p = 0; p < defectArray.length; p++) {
+        if (defectArray.length) {
+            await googleSheets.spreadsheets.values.append({
+                auth,
+                spreadsheetId,
+                range: "Backlog-LDSP!A:E",
+                valueInputOption: "USER_ENTERED",
+                resource: {
+                    values: [
+                        [date, employee, sections, allPrioritiesString[p], allDefectsString[p], '-',
+                        ]
+                    ]
+                }
+            })
+        }
+    }
 
     // res.redirect("/")
     res.redirect("/limeDSPChecklist");
